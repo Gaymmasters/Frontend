@@ -4,7 +4,7 @@ import './index.css';
 import App from './App/App';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import LoginPage from './App/component/LoginPage';
+import LoginPage from './App/component/LoginPage/LoginPage';
 import ResetPassword from './App/component/ResetPassword';
 import { createStore } from './features/createStore';
 import { rootReducer } from './features/rootReducer';
@@ -12,10 +12,13 @@ import { rootReducer } from './features/rootReducer';
 const initialState = {  
   login: '',
   password: '',
+  email:"",
   skin: 0,
-  token: ["",""],
+  refreshToken:"",
+  accessToken:"",
   game_data: {},
-  id: 0
+  id: 0,
+  isLogin: false,
 }
 
 export const store = createStore(rootReducer,initialState)
