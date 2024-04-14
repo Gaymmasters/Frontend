@@ -3,6 +3,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import "./loginReg.css";
 import LoginPage from './LoginPage';
 import MenuPage from '../menu/MenuPage';
+import logo from "../img/logo.png";
 
 const RegPage = () => {
     return(
@@ -18,6 +19,7 @@ const RegPage = () => {
         //         }
         //     } 
         <div className='container'>
+            <img src= {logo} alt = "logo"></img>
             <h1>Sing up</h1>
             <div className='group'>
                 <div className='gp' id='gp-in'>  
@@ -36,7 +38,7 @@ const RegPage = () => {
                 </div>
                 <div className='gp' id='gp-btn'>
                 <Link to = "/menu">
-                    <button /*onClick={reg} id='reg'*/> Confirm </button>
+                    <button className='confirm'/*onClick={reg} id='reg'*/> Confirm </button>
                 </Link>
                 <Link to="/login">
                     <button>Log in</button>
