@@ -7,15 +7,7 @@ export function rootReducer(state,action){
         state.refreshToken = action.refreshToken;
         state.accessToken = action.accessToken;
         state.skin = action.skin;
-    }
-    if (action.type === "logIn"){
-        state.id = action.id;
-        state.email = action.email;
-        state.login = action.login;
-        state.password = action.password;
-        state.refreshToken = action.refreshToken;
-        state.accessToken = action.accessToken;
-        state.skin = action.skin;
+        state.isLogin = true;
     }
     if (action.type === "logOut"){
         state.login = '';
@@ -25,6 +17,7 @@ export function rootReducer(state,action){
         state.refreshToken = "";
         state.accessToken = "";
         state.id =  0;
+        state.isLogin = false;
     }
     return state
 }
