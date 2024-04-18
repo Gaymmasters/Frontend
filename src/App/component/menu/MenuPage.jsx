@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from 'react';
 import { Link, Navigate, Route, Routes } from 'react-router-dom';
-import RegPage from '../../../API/RegUser';
+import LoginPage from '../LoginRegPages/LoginPage';
+import UserReg from '../../../API/RegUser';
+import { store } from '../../..';
 
 const MenuPage = () => {
-    // const [{email,password,isLog}] = useState('');
-    //     async function logOut(){
-    //         const flag = true;
-    //         const res = await RegUser.LogOut({email: "teg4g4@gmail.com", login: "Te3234", password: "123455"});
-    //         store.dispatch({type: "reg", ...res});
-    //         if (!res.result){
-    //             useState.removeAttribute(email,password, isLog == false )
-    //         }; 
-    //         if (flag === false) {
-    //             Navigate('/login')
-    //         }
-    //     } 
+    async function logOut(){
+        const res = await UserReg.LogOut({})
+        if (!res.result){
+            alert('Error:' + res.message);
+        }
+        else{
+            store.dispatch({type: "logOut"});
+            Navigate("/login");
+        }
+    }
     return(
         <div className='main'>
             <div className='top'>
-                <button className='logout' /*</div>onClick={logOut}*/>Log out</button>
+                <button className='logout' onClick={logOut}>Log out</button>
             </div>
             <div className='container'>
                 <Link to=''>
@@ -34,7 +33,7 @@ const MenuPage = () => {
                     <button className='menu'>Settings</button>
                 </Link>
                 <Routes>
-                    <Route path='/findgame' />
+                    <Route path='/login' Component={<LoginPage/>} />
 
                 </Routes>
             </div>

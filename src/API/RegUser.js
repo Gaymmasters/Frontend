@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export default class UserReg{
-    static async Registration(data) {
+    static async Reg(data) {
         try{
             const res = await axios.post("http://localhost:5000/api/registration",{...data})
             return res.data

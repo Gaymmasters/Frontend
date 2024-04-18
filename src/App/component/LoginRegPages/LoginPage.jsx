@@ -1,26 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import { store } from '../../..';
-import { getAll } from '../../../API/test';
 import RegPage from './RegPage';
 import './loginReg.css'
 import MenuPage from '../menu/MenuPage';
 import logo from "../img/logo.png";
+import UserReg from '../../../API/RegUser';
+import * as valid from "email-validator";
 
 
 const LoginPage = () => {
-    // const [{email, password,isLogin}] = useState('');
-    //     async function reg(){
-    //         const res = await RegUser.reg({email: "teg4g4@gmail.com", password: "123455"})
-    //         store.dispatch({type: "reg", ...res});
-    //         if (!res.result){
-    //             console.log('error');
-    //         }
-    //         else{
-    //             Navigate('/menu');
-    //             useState.setAttribute(email,password,isLogin == true);
-    //         }
-    //     } 
+    const [data, setData] = useState({});
+        async function logIn(){
+        if (valid.validate(data.email)){
+            if (data.password.length >= 5 &&  data.password.length <=20){    
+                const res = await UserReg.LogIn(data)
+                if (!res.result){
+                    alert('Error:' + res.message);
+                }
+                else{
+                    store.dispatch({type: "reg", ...res});
+                }
+                if (data.isLogin){
+                    Navigate("/menu");
+                }
+            }
+            else alert("Invalid password");    
+        }
+        else alert("Invalid e-mail");
+        } 
+
     return(
         <div className='container'>
             <img src= {logo} alt = "logo"></img>
@@ -30,16 +39,17 @@ const LoginPage = () => {
                     <label>e-mail</label>
                     <input 
                     type='email'
-                    className='inp-group' />
+                    className='inp-group'
+                    onChange={e => setData({...data,email: e.target.value})}/>
                     <label>Password</label>
                     <input 
                     type='password'
-                    className='inp-group' />
+                    className='inp-group' 
+                    onChange={e => setData({...data,password: e.target.value})}/>
                 </div>
                 <div className='bloсk-btn'>
-                    <Link to = "/menu">
-                        <button  className='confirm' style={{marginTop: 69}} /*onClick={reg}*/> Confirm </button>
-                    </Link>
+                    
+                <button  className='confirm' style={{marginTop: 69}} onClick={logIn}> Confirm </button>
                 </div>
                 <div className='bloсk-btn'>
                     <Link to="/reg">
