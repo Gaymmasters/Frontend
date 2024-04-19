@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App/App';
 import './index.css';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Route, Router, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import LoginPage from './App/component/LoginRegPages/LoginPage';
 import { createStore } from './features/createStore';
 import { rootReducer } from './features/rootReducer';
@@ -27,36 +27,28 @@ window.store = store
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const router = createBrowserRouter([
-  {
-    path: "/login",
-    element: <LoginPage/>
-  },
-  {
-    path: "/",
-    element: <App/>
-  },
-  {
-    path: "/reg",
-    element: <RegPage/>
-  },
-  {
-    path: "/menu",
-    element: <MenuPage/>
-  },
-  // {
-  //   path: "/menu/findgame",
-  //   element: </>,
-  // },
-]
-);
+// const router = createBrowserRouter([
+//   <Route path='/login' Component={<LoginPage/>}/>,
+//   {
+//     path: "/",
+//     element: <App/>
+//   },
+//   {
+//     path: "/reg",
+//     element: <RegPage/>
+//   },
+//   {
+//     path: "/menu",
+//     element: <MenuPage/>
+//   },
+  
+// ]
+// );
 
 root.render(
   <>
     <React.StrictMode>
-      
-        <RouterProvider router={router}/>
-      
+      <App/>
     </React.StrictMode>
 
   </>

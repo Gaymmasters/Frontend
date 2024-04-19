@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Navigate, Route, Routes } from 'react-router-dom';
+import { Link, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import "./loginReg.css";
 import LoginPage from './LoginPage';
 import MenuPage from '../menu/MenuPage';
@@ -10,18 +10,17 @@ import { store } from '../../..';
 
 const RegPage = () => {
     const [data, setData] = useState({});
+    const navigate = useNavigate();
     async function reg(){
         if (valid.validate(data.email)){
-            if (data.password.lenght >= 5 && data.password.lenght <= 20){
+            if (data.password.length >= 5 && data.password.length <= 20){
                 const res = await UserReg.Reg(data)
                 if (!res.result){
-                    alert("Error:" + res.massage);
+                    alert("Error:" + res.message);
                 }
                 else{
                     store.dispatch({type: "reg", ...res});
-                }
-                if (data.isLogin){
-                    Navigate("/menu");
+                    navigate('/menu', {replace: false})
                 }
             }
             else alert("invalid password");

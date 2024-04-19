@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, Navigate, Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { store } from '../../..';
 import RegPage from './RegPage';
 import './loginReg.css'
@@ -8,9 +8,9 @@ import logo from "../img/logo.png";
 import UserReg from '../../../API/RegUser';
 import * as valid from "email-validator";
 
-
 const LoginPage = () => {
     const [data, setData] = useState({});
+    const navigate = useNavigate();
         async function logIn(){
         if (valid.validate(data.email)){
             if (data.password.length >= 5 &&  data.password.length <=20){    
@@ -20,9 +20,7 @@ const LoginPage = () => {
                 }
                 else{
                     store.dispatch({type: "reg", ...res});
-                }
-                if (data.isLogin){
-                    Navigate("/menu");
+                    navigate("/menu", {replace: false}  )
                 }
             }
             else alert("Invalid password");    
