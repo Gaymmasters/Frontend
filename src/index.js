@@ -27,24 +27,6 @@ window.store = store
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-// const router = createBrowserRouter([
-//   <Route path='/login' Component={<LoginPage/>}/>,
-//   {
-//     path: "/",
-//     element: <App/>
-//   },
-//   {
-//     path: "/reg",
-//     element: <RegPage/>
-//   },
-//   {
-//     path: "/menu",
-//     element: <MenuPage/>
-//   },
-  
-// ]
-// );
-
 root.render(
   <>
     <React.StrictMode>
