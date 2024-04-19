@@ -13,6 +13,9 @@
 
     border-radius: 30px;
 }
+h1{
+    text-align: center;
+}
 .group{
     width: 200px;
     height: 250px;
@@ -28,7 +31,7 @@
     margin-bottom: 10px;
 }
 img{
-    height: 104px;
+    height: 70px;
 
     display: block;
     margin: auto;

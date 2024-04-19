@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Link, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-import { store } from '../../..';
+import React, { useState } from 'react';
+import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import RegPage from './RegPage';
 import './loginReg.css'
-import MenuPage from '../menu/MenuPage';
 import logo from "../img/logo.png";
 import UserReg from '../../../API/RegUser';
 import * as valid from "email-validator";
+import { moveToLocalStore } from '../../../features/store';
 
 const LoginPage = () => {
     const [data, setData] = useState({});
@@ -19,8 +18,8 @@ const LoginPage = () => {
                     alert('Error:' + res.message);
                 }
                 else{
-                    store.dispatch({type: "reg", ...res});
-                    navigate("/menu", {replace: false}  )
+                    moveToLocalStore({...res, isLogin: true});
+                    navigate("/", {replace: false});
                 }
             }
             else alert("Invalid password");    
@@ -46,18 +45,13 @@ const LoginPage = () => {
                     onChange={e => setData({...data,password: e.target.value})}/>
                 </div>
                 <div className='bloсk-btn'>
-                    
-                <button  className='confirm' style={{marginTop: 69}} onClick={logIn}> Confirm </button>
+                    <button  className='confirm' style={{marginTop: 69}} onClick={logIn}> Confirm </button>
                 </div>
                 <div className='bloсk-btn'>
                     <Link to="/reg">
                         <button>Sing up</button>
                     </Link>
                 </div>
-                <Routes>
-                    <Route path='/reg' element={<RegPage/>}/>
-                    <Route path='/menu' element={<MenuPage/>}/>
-                </Routes>
             </div>
         </div>
     );

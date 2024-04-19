@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { Link, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import "./loginReg.css";
 import LoginPage from './LoginPage';
-import MenuPage from '../menu/MenuPage';
 import logo from "../img/logo.png";
 import * as valid from "email-validator";
 import UserReg from '../../../API/RegUser';
-import { store } from '../../..';
 
 const RegPage = () => {
     const [data, setData] = useState({});
@@ -19,8 +17,8 @@ const RegPage = () => {
                     alert("Error:" + res.message);
                 }
                 else{
-                    store.dispatch({type: "reg", ...res});
-                    navigate('/menu', {replace: false})
+                    localStorage.getItem({...res, isLogin: true});
+                    navigate('/', {replace: false})
                 }
             }
             else alert("invalid password");
@@ -51,16 +49,10 @@ const RegPage = () => {
                     onChange={e => setData({...data,password: e.target.value})} />
                 </div>
                 <div className='gp' id='gp-btn'>
-                <Link to = "/menu">
                     <button className='confirm'onClick={reg} id='reg'> Confirm </button>
-                </Link>
                 <Link to="/login">
                     <button>Log in</button>
                 </Link>
-                <Routes>
-                    <Route path='/login' element={<LoginPage/>}/>
-                    <Route path='/menu' element={<MenuPage/>}/>
-                </Routes>
                 </div>
             </div>
         </div>

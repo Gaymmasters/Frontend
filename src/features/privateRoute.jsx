@@ -1,9 +1,8 @@
 import React from "react";
-import { Navigate, Outlet, Route } from "react-router";
-import { store } from "..";
+import { Navigate, Outlet } from "react-router";
 
 const PrivateRoute = (props) => {
-    const isLogin = store.getState.isLogin
+    const isLogin = localStorage.getItem("isLogin");
     if (isLogin){
         return <Outlet/>
     }
