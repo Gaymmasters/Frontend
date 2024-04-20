@@ -5,6 +5,7 @@ import LoginPage from './LoginPage';
 import logo from "../img/logo.png";
 import * as valid from "email-validator";
 import UserReg from '../../../API/RegUser';
+import { moveToLocalStore } from '../../../features/store';
 
 const RegPage = () => {
     const [data, setData] = useState({});
@@ -17,7 +18,7 @@ const RegPage = () => {
                     alert("Error:" + res.message);
                 }
                 else{
-                    localStorage.getItem({...res, isLogin: true});
+                    moveToLocalStore({...res, isLogin: true});
                     navigate('/', {replace: false})
                 }
             }

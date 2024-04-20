@@ -1,4 +1,4 @@
-import { Link, Navigate, Route, Routes } from 'react-router-dom';
+import { Link, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import LoginPage from '../LoginRegPages/LoginPage';
 import UserReg from '../../../API/RegUser';
 import RulesPage from '../rules/RulesPage';
@@ -6,6 +6,7 @@ import './menuPage.css';
 import logo from "../img/logo.png"
 
 const MenuPage = () => {
+    const navigate = useNavigate();
     async function logOut(){
         const res = await UserReg.LogOut({})
         if (!res.result){
@@ -13,7 +14,7 @@ const MenuPage = () => {
         }
         else{
             localStorage.clear()
-            Navigate("/login");
+            navigate("/login");
         }
     }
 let isShown = false;
