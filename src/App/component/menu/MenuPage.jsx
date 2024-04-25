@@ -1,5 +1,4 @@
-import { Link, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-import LoginPage from '../LoginRegPages/LoginPage';
+import { Link, useNavigate } from 'react-router-dom';
 import UserReg from '../../../API/RegUser';
 import RulesPage from '../rules/RulesPage';
 import './menuPage.css';
@@ -10,7 +9,7 @@ const MenuPage = () => {
     async function logOut(){
         const res = await UserReg.LogOut({})
         if (!res.result){
-            alert('Error:' + res.message);
+            alert('Error: ' + res.message);
         }
         else{
             localStorage.clear()

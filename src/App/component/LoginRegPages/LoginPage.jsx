@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Route, Routes, useNavigate } from 'react-router-dom';
-import RegPage from './RegPage';
+import { Link, useNavigate } from 'react-router-dom';
 import './loginReg.css'
 import logo from "../img/logo.png";
 import UserReg from '../../../API/RegUser';
