@@ -25,11 +25,18 @@ h1{
     margin: auto;
     margin-bottom: 10px;
 }
-label{
+.label{
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
 }
 ::placeholder{
     text-align: center;
+}
+.skins{
+    width: 10x;
+    height: 10px;
+    background-color: aqua;
+
+
 }
