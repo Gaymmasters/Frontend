@@ -38,7 +38,7 @@ const SettingsPage = () => {
                 <div className={classes.skin} id="skin-5"></div>
                 <button className={classes.btnChange}>Change</button>
             </div>
-            <Link to="/menu">
+            <Link to="/">
                 <button className={classes.bthBack} onClick={ChangeInf}>Back</button>
             </Link>
         </div>

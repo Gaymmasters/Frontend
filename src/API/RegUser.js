@@ -24,7 +24,7 @@ export default class UserReg{
     }
     static async ChangeInf(data) {
         try{
-            const res = await axios.post("http://localhost:5000/api/user/:id",{...data})
+            const res = await axios.put("http://localhost:5000/api/user/" + localStorage.getItem("id"),{...data})
             return res.data
         }catch(error){ console.log(error) }
         

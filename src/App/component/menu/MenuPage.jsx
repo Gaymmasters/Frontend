@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import UserReg from '../../../API/RegUser';
-import RulesPage from '../rules/RulesPage';
 import './menuPage.css';
 import logo from "../img/logo.png"
 
@@ -39,10 +38,10 @@ function hide() {
                     <Link to=''>
                         <button className='menu'>Create game</button>
                     </Link>
-                    <Link to='/rules' element = {<RulesPage/>}>
+                    <Link to='/rules'>
                         <button className='menu'>Rules</button>
                     </Link>
-                    <Link to=''>
+                    <Link to='/settings'>
                         <button className='menu'>Settings</button>
                     </Link>
                     <button className='menu' onClick={logOut}>Log out</button>
